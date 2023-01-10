@@ -6,7 +6,7 @@
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
 			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=synapsesqldb.database.windows.net;initial catalog=SynapseSQLServer;user id=metaage",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VARkYxMTBDQTctREJBMi00MUVGLTk5RjktNTlGNTAwOTAyNTY3XzJhOTg2NWNlLWQyOTktNDk5Yi1hMmEzLWEwZDQ1YWM1MjI0YiINCn0="
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VANzhGQ0NDRUQtQzQyNy00MjY2LUJFOUQtOUY2RkM4NDNDQzA4X2JjZWQyYTcwLTU4MzItNGYyNy1hZjY2LTlmMDkxYzhhZTE5MSINCn0="
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
