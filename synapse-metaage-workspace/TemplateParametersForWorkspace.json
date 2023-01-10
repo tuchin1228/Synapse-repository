@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synapse-metaage-workspace"
+		},
+		"AzureSqlDatabase_connectionString": {
+			"value": ""
+		},
+		"AzureTableStorage_connectionString": {
+			"value": ""
+		},
+		"OldSql_connectionString": {
+			"value": ""
+		},
+		"SftpDemo_password": {
+			"value": ""
+		},
+		"SynapseSqlPool_connectionString": {
+			"value": ""
+		},
+		"SynapseStorage_accountKey": {
+			"value": ""
+		},
+		"synapse-metaage-workspace-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapse-metaage-workspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"RestAPI_properties_typeProperties_url": {
+			"value": "https://api.nationalize.io/?name=nathaniel"
+		},
+		"SftpDemo_properties_typeProperties_host": {
+			"value": "20.78.18.251"
+		},
+		"SftpDemo_properties_typeProperties_userName": {
+			"value": "metaage"
+		},
+		"SynapseStorage_properties_typeProperties_url": {
+			"value": "https://metaagesynapseblob.dfs.core.windows.net/"
+		},
+		"synapse-metaage-workspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://metaagesynapseblob.dfs.core.windows.net"
+		}
+	}
+}
