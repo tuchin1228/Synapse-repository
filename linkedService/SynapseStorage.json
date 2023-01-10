@@ -6,7 +6,7 @@
 		"type": "AzureBlobFS",
 		"typeProperties": {
 			"url": "https://metaagesynapseblob.dfs.core.windows.net/",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VARkYxMTBDQTctREJBMi00MUVGLTk5RjktNTlGNTAwOTAyNTY3X2U2NjQ1ZTU0LWVmZTgtNGJkZC1hY2Q1LTM3OGE0ZWNkNjdlZSINCn0="
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VANzhGQ0NDRUQtQzQyNy00MjY2LUJFOUQtOUY2RkM4NDNDQzA4X2YzOWE4MzdmLTQyMDQtNDE5Yi04YTI2LTE2NmUyYjVmNmI4NiINCn0="
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
