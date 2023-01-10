@@ -1,0 +1,16 @@
+{
+	"name": "AzureStorageTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureTableStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "movieTest"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

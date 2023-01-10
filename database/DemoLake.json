@@ -1,0 +1,25 @@
+{
+	"name": "DemoLake",
+	"properties": {
+		"Name": "DemoLake",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://input@metaagesynapsestorage.dfs.core.windows.net/DemoLake",
+			"Properties": {
+				"FormatType": "csv",
+				"LinkedServiceName": "metaage-synapseworkspace-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 2,
+		"ObjectId": "33d0bada-a305-4b66-af80-b0bcdcc8b50b"
+	},
+	"type": "DATABASE"
+}

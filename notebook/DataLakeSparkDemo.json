@@ -1,0 +1,275 @@
+{
+	"name": "DataLakeSparkDemo",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SparkDemo",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "fee8c134-5428-43b3-a6b9-cf9e50cc2c82"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"c6c979ce-9d9e-43dd-9e10-02aff4d15438": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "1",
+										"1": "testname",
+										"2": "100"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "id",
+										"type": "int"
+									},
+									{
+										"key": "1",
+										"name": "productName",
+										"type": "string"
+									},
+									{
+										"key": "2",
+										"name": "price",
+										"type": "decimal"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"1"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/6ff8a07e-d9f6-4c7a-9e02-198ebc6930e4/resourceGroups/SynapseDemo/providers/Microsoft.Synapse/workspaces/metaage-synapseworkspace/bigDataPools/SparkDemo",
+				"name": "SparkDemo",
+				"type": "Spark",
+				"endpoint": "https://metaage-synapseworkspace.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkDemo",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.2",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"jupyter": {
+						"outputs_hidden": false
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql \r\n",
+					"USE DemoLake;\r\n",
+					"SHOW TABLES;"
+				],
+				"execution_count": 7
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"CREATE TABLE DemoLake.Product (id INT, productName STRING, price DECIMAL);"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"INSERT INTO DemoLake.Product VALUES(1,'testname',100);"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"USE DemoLake;\r\n",
+					"SELECT * FROM Product;"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.sql(\"SELECT * FROM Product\")\r\n",
+					"display(df)"
+				],
+				"execution_count": 12
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"import matplotlib.pyplot as plt\r\n",
+					"import seaborn as sns\r\n",
+					"import pandas as pd\r\n",
+					"from azureml.opendatasets import NycTlcYellow\r\n",
+					"from datetime import datetime\r\n",
+					"from dateutil import parser\r\n",
+					"\r\n",
+					"end_date = parser.parse('2018-06-06')\r\n",
+					"start_date = parser.parse('2018-05-01')\r\n",
+					"nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)\r\n",
+					"df = nyc_tlc.to_spark_dataframe()\r\n",
+					"\r\n",
+					"from pyspark.sql.functions import *\r\n",
+					"\r\n",
+					"filtered_df = df.select('vendorID', 'passengerCount', 'tripDistance','paymentType', 'fareAmount', 'tipAmount'\\\r\n",
+					"                                , date_format('tpepPickupDateTime', 'hh').alias('hour_of_day')\\\r\n",
+					"                                , dayofweek('tpepPickupDateTime').alias('day_of_week')\\\r\n",
+					"                                , dayofmonth(col('tpepPickupDateTime')).alias('day_of_month'))\\\r\n",
+					"                            .filter((df.passengerCount > 0)\\\r\n",
+					"                                & (df.tipAmount >= 0)\\\r\n",
+					"                                & (df.fareAmount >= 1) & (df.fareAmount <= 250)\\\r\n",
+					"                                & (df.tripDistance > 0) & (df.tripDistance <= 200))\r\n",
+					"\r\n",
+					"filtered_df.createOrReplaceTempView(\"taxi_dataset\")\r\n",
+					"\r\n",
+					"# To make development easier, faster, and less expensive, downsample for now\r\n",
+					"sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)\r\n",
+					"\r\n",
+					"# The charting package needs a Pandas DataFrame or NumPy array to do the conversion\r\n",
+					"sampled_taxi_pd_df = sampled_taxi_df.toPandas()\r\n",
+					"ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')\r\n",
+					"ax1.set_title('Tip amount distribution')\r\n",
+					"ax1.set_xlabel('Tip Amount ($)')\r\n",
+					"ax1.set_ylabel('Counts')\r\n",
+					"plt.suptitle('')\r\n",
+					"plt.show()"
+				],
+				"execution_count": 13
+			}
+		]
+	}
+}

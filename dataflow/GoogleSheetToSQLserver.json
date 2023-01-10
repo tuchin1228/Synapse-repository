@@ -1,0 +1,85 @@
+{
+	"name": "GoogleSheetToSQLserver",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "GoogleSheetData",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          column_1 as string,",
+				"          column_2 as string,",
+				"          column_3 as string,",
+				"          column_4 as string,",
+				"          column_5 as string,",
+				"          column_6 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     store: 'googlesheets',",
+				"     format: 'rest',",
+				"     spreadSheetId: '1JjNGeiQae1fO2L5hET3ZcA23tfu4IgZx6Do5m7QmXRc',",
+				"     startCell: 'A',",
+				"     endCell: 'F',",
+				"     sheetName: 'moviesDB') ~> source1",
+				"source1 select(mapColumn(",
+				"          movie = column_1,",
+				"          title = column_2,",
+				"          genres = column_3,",
+				"          year = column_4,",
+				"          Rating = column_5,",
+				"          {Rotton Tomato} = column_6",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          movie as string,",
+				"          title as string,",
+				"          genres as string,",
+				"          year as string,",
+				"          Rating as string,",
+				"          RottonTomato as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          movie,",
+				"          title,",
+				"          genres,",
+				"          year,",
+				"          Rating,",
+				"          RottonTomato = {Rotton Tomato}",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
