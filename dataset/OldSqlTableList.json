@@ -1,0 +1,12 @@
+{
+	"name": "OldSqlTableList",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OldSql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
